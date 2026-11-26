@@ -155,7 +155,7 @@ class AudioOut {
                 while (k < active.size) {
                     val v = active[k]
                     val n = minOf(CHUNK, v.data.size - v.pos)
-                    for (j in 0 until n) mix[j] += v.data[v.pos + j]
+                    for (j in 0 until n) mix[j] = mix[j] + v.data[v.pos + j].toInt()
                     v.pos += n
                     if (v.pos >= v.data.size) active.removeAt(k) else k++
                 }
